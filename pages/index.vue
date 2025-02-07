@@ -34,6 +34,8 @@ onMounted(() => {
 
 // Filter the companies dynamically
 const filteredCompanies = computed(() =>
-    companyStore.companies.filter((c) => c.name.toLowerCase().includes(searchQuery.value.toLowerCase()))
+    (companyStore.companies || []).filter((c) =>
+        c.name?.toLowerCase().includes(searchQuery.value?.toLowerCase() || '')
+    )
 );
 </script>
